@@ -1,77 +1,124 @@
 :root {
   font-family: Inter, system-ui, Avenir, Helvetica, sans-serif;
-  line-height: 1.5;
   font-weight: 400;
-
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+
+  --scrollbar-bg: rgba(0, 0, 0, 0);
+  --thumb-bg: rgba(255, 255, 255, 0.2);
+  --accent-dark: #646cff;
+  --accent-hover: #535bf2;
+  --accent-light: #747bff;
+  --logo-dropshadow: #646cffaa;
+  --paragraph-color: #888;
+  --light-theme-background: #ffffff;
+  --light-theme-color: #213547;
+
+  color-scheme: light dark;
+  color: rgba(255, 255, 255, 0.87);
+  background-color: #242424;
+
+  scrollbar-width: thin;
+  scrollbar-color: var(--thumb-bg) var(--scrollbar-bg);
 }
 
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: underline;
+::-webkit-scrollbar {
+  width: 8px;
+  height: 10px;
 }
 
-a:hover {
-  color: #535bf2;
+::-webkit-scrollbar-track {
+  background: var(--scrollbar-bg);
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: var(--thumb-bg);
+  border-radius: 6px;
+  border: 3px solid var(--scrollbar-bg);
+}
+
+::-webkit-scrollbar-corner {
+  background: var(--scrollbar-bg);
 }
 
 body {
   margin: 0;
   display: flex;
   place-items: center;
-  min-width: 320px;
   min-height: 100vh;
 }
 
 h1 {
   font-size: 1.2em;
-  line-height: 1.1;
+  line-height: 1;
+}
+
+a {
+  font-weight: 500;
+  color: var(--accent-dark);
+  text-decoration: underline;
+}
+
+a:hover {
+  color: var(--accent-hover);
+}
+
+ul {
+  display: flex;
+  flex-wrap: wrap;
+  max-width: 360px;
+  min-width: 170px;
+  margin-block-start: 0px;
+  margin-block-end: 0px;
+  padding-inline-start: 0px;
+  text-align: center;
+  justify-content: center;
+  list-style-type: none;
+  gap: 10px 20px;
+  padding: 0px;
+}
+
+li {
+  margin: 0;
+  padding: 0;
 }
 
 #app {
   margin: 0 auto;
-  padding: 2rem;
   text-align: center;
 }
 
 .logo {
   height: 12em;
-  padding: 1.5em;
   will-change: filter;
   transition: filter 300ms;
 }
 
 .logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
+  filter: drop-shadow(0 0 2em var(--logo-dropshadow));
 }
 
 .paragraph {
-  color: #888;
+  color: var(--paragraph-color);
 }
 
 @media (prefers-color-scheme: light) {
   :root {
-    color: #213547;
-    background-color: #ffffff;
+    color: var(--light-theme-color);
+    background-color: var(--light-theme-background);
   }
   a:hover {
-    color: #747bff;
+    color: var(--accent-light);
   }
 }
 
-ul {
-  display: flex;
-  margin: 0px 20px;
-  flex-wrap: wrap;
-  justify-content: center;
-  list-style-type: none;
-  gap: 20px;
+@media (max-height: 420px) {
+  .logo {
+    height: calc(40vh - 20px);
+    min-height: 60px;
+    padding: 0px;
+  }
 }
